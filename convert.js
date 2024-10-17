@@ -28,17 +28,23 @@ button.addEventListener('click',()=>{
     let val1 = input[0].value;
     let val2 = input[1].value;
     let num = val.value;
+    let errMessage = "";
     if(val1===val2){
-        wrong.innerHTML = `Entered values should not be same`;
+        errMessage = `Entered values should not be same`;
     }
-    if(num==''){
-        wrong.innerHTML = `Input value should not be empty`;
+    else if(num===''){
+        errMessage = `Input value should not be empty`;
     }
-    if(isNaN(num)){
-        wrong.innerHTML = `Input should be only numbers`
+    else if(isNaN(num)){
+        errMessage = `Input should be only numbers`
     }
-    else{
-        convert(val1,val2,num);
+
+    if (errMessage) {
+        incorrect.innerHTML = errMessage;
+        incorrect.style.display = "block";
+    } else {
+        incorrect.style.display = "none";  
+        convert(val1, val2, num);
     }
 })
 
